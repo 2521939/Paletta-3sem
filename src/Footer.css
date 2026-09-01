@@ -1,0 +1,65 @@
+/* começando cabeçalho */
+.cabecalho {
+    background-color: #BEDCE0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-radius: 12px 12px 0 0;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-auth a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 14px;
+    margin-left: 16px;
+}
+
+.menu-auth a:hover {
+    text-decoration: underline;
+}
+/* fim do cabeçalho */
+
+/* começo do footer */
+.rodape {
+    background-color: #DEEDEF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    border-radius: 0 0 12px 12px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.copyright {
+    font-size: 13px;
+    color: #666666;
+}
+
+
+
+.rodape a {
+    color: #555555;
+    font-size: 13px;
+}
+
+.rodape button {
+    padding-right: 10px;
+    color: #555555;
+    font-size: 13px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+/* fim do footer */
