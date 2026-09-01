@@ -1,16 +1,66 @@
-# React + Vite
+# 🎨 Paletta
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> Seja bem-vindo ao repositório do **Paletta**, desenvolvido para o projeto PMI (3º Semestre).  
+> A aplicação utiliza o **[Vite](https://vitejs.dev/)** como ferramenta de construção e ambiente de desenvolvimento.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📋 Pré-requisitos
 
-## React Compiler
+Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas no seu computador:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **[Git](https://git-scm.com/)** (necessário para clonar o repositório)
+- **[Node.js](https://nodejs.org/)** (acompanhado do gerenciador de pacotes **npm**)
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 🚀 Passo a Passo de Instalação e Execução
+
+Siga o guia abaixo para rodar a aplicação em sua máquina local:
+
+### 1. Clonar o Repositório
+
+Escolha a pasta onde deseja salvar o projeto em seu computador  
+*(Exemplo no Windows: `C:\Users\Aluno\Desktop\tutorial`)*.
+
+Abra o seu **Terminal / Prompt de Comando (CMD)** nessa localização e execute o comando:
+
+```bash
+git clone https://github.com/2521939/Paletta-3sem.git
+```
+
+### 2. Acessar a Pasta do Projeto
+
+Entre no diretório que acabou de ser criado:
+
+```bash
+cd Paletta-3sem
+```
+
+### 3. Instalar as Dependências
+
+Instale todos os pacotes e dependências do projeto executando:
+
+```bash
+npm install
+```
+
+### 4. Executar o Servidor de Desenvolvimento
+
+Inicie a aplicação localmente:
+
+```bash
+npm run dev
+```
+
+> ⚠️ **Atenção às Branches!**  
+> Antes de executar o `npm run dev`, verifique em qual **branch** você está posicionado (`git branch`).  
+> O projeto possui branches específicas para conteúdos e funcionalidades diferentes que você possa desejar visualizar. Para trocar para a branch desejada, utilize:
+> ```bash
+> git checkout <nome-da-branch>
+> ```
+
+### 5. Acessar a Aplicação no Navegador
+
+Após executar o comando, o terminal exibirá um link local (normalmente `http://localhost:5173/`).  
+Abra o navegador e acesse esse endereço para visualizar o projeto rodando.
