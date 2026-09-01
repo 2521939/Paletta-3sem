@@ -1,0 +1,92 @@
+/* Parte que define aperencia do modal ou o dialogue, do login!*/
+.modal-de-login{
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+border: none;
+border-radius: 5%;
+margin: auto;
+width: 25%;
+height: 65%;
+}
+
+.modal-de-login::backdrop {
+background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header-modal-login {
+background-color: var(--cor-principal);
+width: 100%;
+height: 3.5em;
+display: flex;
+align-items: center;
+}
+
+.login-header-texto{
+text-align: center;
+margin-left: 45%;
+}
+
+.fecharbtn{
+width: 2.5em;
+height: 2.5em;
+font-size: large;
+margin-left: auto;
+margin-right: 5%;
+border: none;
+color: var(--cor-preta);
+background: none;
+cursor: pointer;
+}
+
+.campos{
+margin: 2em;
+}
+
+.campo-nome-email{
+margin-top: 2.5em;
+margin-bottom: 5em;
+text-align: center;
+display: flex;
+flex-direction: column;
+}
+
+.campo-senha{
+margin-bottom: 5em;
+text-align: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+label{
+font-size: 1.5em;
+color: #555;
+font-weight: bold;
+}
+
+input{
+margin-top: 2em;
+outline: none;
+border-style:solid;
+border: 1px solid lightgray;
+border-radius: 20em;
+padding: 1em;
+height: 2em;
+width: 100%;
+font-size: 1em;
+}
+
+.container-botao-entrar-teste{
+    border-radius: 10%;
+}
+
+.entrar-botao {
+margin-top: 5em;
+height: 2.5em;
+width: 10em;
+border-radius: 20em;
+font-size: 1em;
+border: none;
+cursor: pointer;
+font-weight: bold;
+background-color: var(--cor-destaque);
+}
