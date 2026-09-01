@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* se tiver só a div root e a div footer, um fica em cima e o outro fica em baixo */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#root {
+    flex: 1;
+}
+/* fim do um totalmente em cima e outro totalmente em baixo */
+
+/* começando cabeçalho */
+.cabecalho {
+    background-color: #BEDCE0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-radius: 12px 12px 0 0;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-auth a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 14px;
+    margin-left: 16px;
+}
+
+.menu-auth a:hover {
+    text-decoration: underline;
+}
+/* fim do cabeçalho */
+
+/* começo do footer */
+.rodape {
+    background-color: #DEEDEF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    border-radius: 0 0 12px 12px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.copyright {
+    font-size: 13px;
+    color: #666666;
+}
+
+.rodape a {
+    color: #555555;
+    font-size: 13px;
+}
+/* fim do footer */
+
+/*
+Peguei o CSS para o conteudo da pagina principal...
+Os destaques quando abre o site, meio que só isso ate agora
+https://github.com/2521939/Paletta/blob/sprintum/style.css
+*/
+.cont-frasep {
+    height: 13vh;
+
+    display: flex;
+    justify-content: center;
+}
+
+.item-frasep {
+    text-align: center;
+    margin-bottom: 15px;
+    height: 40%;
+    width: 20%;
+
+    align-self: flex-end;
+}
+
+.cont-destaquesema {
+    height: 50vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-destaquesema {
+    background-color: lightgray;
+    border-radius: 50px;
+    height: 98%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont-botexp {
+    height: 210px;
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.item-botexp {
+
+    background-color: #85C5CE;
+    height: 25%;
+    width: 10%;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
