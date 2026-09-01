@@ -1,16 +1,7 @@
-# React + Vite
+# 🎨 Paletta
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> Essa branch está nossa Sprint 1 de Front-End. <br>
+> Uma aplicação React com multiplos componentes função, estados e eventos.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+* Acesse o Guia da Sprint 1
+[**CLIQUE AQUI**](https://wiki.arisa.com.br/index.php?title=Projeto_de_Desenvolvimento_Front-End_II#Sprint_1_%E2%80%94_Pr%C3%A9-Projeto_(N1))
