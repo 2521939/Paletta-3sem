@@ -1,0 +1,80 @@
+.container-criacao{
+display: flex;
+flex-direction: column;
+background-color: var(--cor-fundo);
+height: 89.999vh;
+margin : auto;
+align-items: center;
+}
+
+.centralizando-dialog{
+    display: felx;
+    align-self: center;
+    justify-self: center;
+    border-radius: 45px;
+    border-width: 0px;
+}
+
+
+.header-criar{
+    display: flex;
+    background-color: var(--cor-destaque-footer);
+    margin-bottom:  2rem;
+    align-items: center;
+    width: 100%;
+}
+
+.titulo-criar{
+margin-left: auto;
+margin-right: auto;
+}
+
+.criacao-dentro {
+    padding-inline: 1rem;
+}
+
+.titulos-campos{
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.voltar{
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    background-color: var(--cor-fundo);
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    margin: 1.5rem;
+    padding: 5px
+}
+
+.circularinput{
+min-width: 15rem;
+max-width: 40rem;
+outline: none;
+border-style:solid;
+border: 1px solid lightgray;
+border-radius: 20em;
+padding: 0.5em;
+height: 2em;
+}
+
+.button-criar{
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    background-color: var(--cor-destaque);
+    transition: background-color 00.5s ease, color 0.5s ease;
+}
+
+.button-criar:hover{
+    background-color: var(--cor-destaque-escura);
+    transition: background-color 00.5s ease, color 0.5s ease;
+}
+
+input{
+
+}
