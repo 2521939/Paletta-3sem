@@ -99,21 +99,21 @@ function salvarPost(evento) {
     <form onSubmit={salvarPost}>
     <section class="container-criacao">
       <section>
-         <section class="header-criar">
+        <section class="header-criar">
          <button class="voltar" onClick={fecharModal}>X</button> 
         <h1 class="titulo-criar">Crie seu post!</h1>
-      </section>
+        </section>
         <section class="criacao-dentro">
         <h2 class="titulos-campos">Titulo do seu Post:</h2>
         
-        <label for="titulo">Titulo:
+        <label>Titulo:
         <input class="circularinput" type="text" id="titulo" name="titulo" value={titulo} onChange={(e) => setTitulo(e.target.value)} placeholder="Escreva sobre o que se trata"/>
         </label>
 
         <h2 class="titulos-campos">Descrição:</h2>
         <section>
         
-        <label required minlength="20" maxlenght="250" for="descricao">Descrição:
+        <label>Descrição:
         <input class="circularinput" type="text" id="descricao" name="descricao" value={descricao} onChange={(e) => setDescricao(e.target.value)} placeholder="De uma descrição para seu post!"/>
         </label>
         </section>
@@ -141,7 +141,7 @@ function salvarPost(evento) {
         <h2 class="titulos-campos">Informações de Contato:</h2>
 
         <section>
-        <label for="comuniOutros">Meio de Comunicação:
+        <label>Meio de Comunicação:
         <input class="circularinput" type="text" id="comuniOutros" name="comuniOutros" value={comunicacao} onChange={(e) => setComunicacao(e.target.value)} placeholder="Insira seu meio de comunicação"/>
         </label>
         </section>
@@ -159,7 +159,7 @@ function salvarPost(evento) {
     </dialog>
 
 
-    <section>
+    <section class="container-posts">
     {posts.map((post) => (
     <div key={post.id} class="post-thumb" onClick={() => abrirPost(post)}>
     <h3>{post.titulo}</h3>

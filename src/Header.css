@@ -29,3 +29,12 @@
 
 .register-cabecalho {
 }
+
+.botaotextologo{
+background: none;
+border: none;
+cursor: pointer;
+font-size: 2em;
+margin-bottom: 10px;
+font-weight: bold;
+}

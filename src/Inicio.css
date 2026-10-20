@@ -38,7 +38,7 @@ https://github.com/2521939/Paletta/blob/sprintum/style.css
 }
 
 .cont-botexp {
-    height: 210px;
+    height: 50px;
     padding: 10px;
 
     display: flex;
@@ -46,9 +46,9 @@ https://github.com/2521939/Paletta/blob/sprintum/style.css
 }
 
 .item-botexp {
-
+    border-style: solid;
     background-color: #85C5CE;
-    height: 25%;
+    height: 50px;
     width: 10%;
     border-radius: 50px;
     display: flex;

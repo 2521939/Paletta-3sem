@@ -5,15 +5,19 @@ width: 80%;
 min-height: 100vh;  /* Vh para "esticar" junto com os posts dentro */
 overflow-y: auto;
 flex-wrap: wrap;
-gap: 1em;
+gap: 1.5em;
 margin: auto;
 padding: 1em;
 justify-content: center;
 border-inline: 0.1em solid lightgray;
 }
 
+body{
+    padding-bottom: 55px; /* Levando em conta o Footer */
+}
+
 .post-thumb{
-margin-top: 2em;
+margin-top: 1em;
 border-radius: 2rem;
 display: flex;
 border-style: solid;
@@ -21,8 +25,8 @@ border-color: #c7c7c7;
 border-width: 0.1em;
 background-color: var(--cor-fundo);
 box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-width: 15rem;
-height: 15rem;
+width: 12rem;
+height: 12rem;
 justify-content: center;
 align-items: end;
 padding: 1rem;
@@ -51,6 +55,7 @@ cursor: pointer;
     color: var(--cor-fundo);
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.39);
     transition: background-color 00.5s ease, color 0.5s ease;
+    border-style: solid;
 }
 
 .icone-novo-post:hover{
@@ -62,14 +67,15 @@ cursor: pointer;
     display: flex;
     justify-content: center;
     align-items:center;
-    font-size: 2.5rem; 
+    font-size: 3rem;
+    padding-bottom: 10px; 
     text-decoration: none;
     line-height: 4rem;
 }
 
 
 .modal-de-post{
-    min-height: 20rem;
+    min-height: 25rem;
     min-width: 30rem;
     width: auto;
     justify-self: center;
@@ -85,7 +91,7 @@ background-color: rgba(0, 0, 0, 0.5);
 
 .header-post{
     padding: 1rem;
-    background-color: var(--cor-principal);
+    background-color: var(--cor-destaque-footer);
     display: flex;
     align-items: center;
 }
@@ -133,6 +139,8 @@ background-color: rgba(0, 0, 0, 0.5);
     padding: 0.5rem;
     border-radius: 50rem;
     color: black;
+    position: absolute;
+    right: 20px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.39);
     transition: background-color 00.5s ease, color 0.5s ease;
 }
@@ -145,9 +153,12 @@ background-color: rgba(0, 0, 0, 0.5);
 
 .deletar{
     border: none;
-    background-color: lightgray;
-    font-size: 1rem;
     padding: 0.5rem;
+    font-size: 1.2rem;
+    background-color: lightgray;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
     border-radius: 50rem;
     color: black;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.39);

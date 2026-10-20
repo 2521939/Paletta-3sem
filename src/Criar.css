@@ -2,16 +2,18 @@
 display: flex;
 flex-direction: column;
 background-color: var(--cor-fundo);
-height: 89.999vh;
+min-height: 35rem;
+max-width: 600px;
+min-width: fit-content;
 margin : auto;
 align-items: center;
+overflow: hidden;
 }
 
 .centralizando-dialog{
-    display: felx;
     align-self: center;
     justify-self: center;
-    border-radius: 45px;
+    border-radius: 30px;
     border-width: 0px;
 }
 
@@ -19,9 +21,11 @@ align-items: center;
 .header-criar{
     display: flex;
     background-color: var(--cor-destaque-footer);
-    margin-bottom:  2rem;
+    margin-bottom:  1rem;
     align-items: center;
-    width: 100%;
+    width: 100vh;
+    max-width: 650px;
+    height: 5rem;
 }
 
 .titulo-criar{
@@ -30,7 +34,7 @@ margin-right: auto;
 }
 
 .criacao-dentro {
-    padding-inline: 1rem;
+    padding-inline: 2rem;
 }
 
 .titulos-campos{
@@ -38,33 +42,49 @@ margin-right: auto;
     margin-bottom: 0.5rem;
 }
 
+label{
+    font-size: 20px;
+}
+
 .voltar{
     font-weight: bold;
     display: inline-block;
     text-align: center;
     background-color: var(--cor-fundo);
-    height: 2rem;
-    width: 2rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: medium;
     border-radius: 50%;
+    border-style: solid;
     margin: 1.5rem;
-    padding: 5px
+    padding: 5px;
+    position: absolute;
+    right: 10px;
+    top: auto;
 }
 
 .circularinput{
 min-width: 15rem;
-max-width: 40rem;
+max-width: 20rem;
+max-height: 2rem;
 outline: none;
 border-style:solid;
 border: 1px solid lightgray;
 border-radius: 20em;
 padding: 0.5em;
+margin-top: 1.5rem;
+margin-left: 0.5rem;
+margin-right: auto;
 height: 2em;
 }
 
 .button-criar{
     border: none;
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    position: absolute;
+    right: 20px;
     border-radius: 50px;
     background-color: var(--cor-destaque);
     transition: background-color 00.5s ease, color 0.5s ease;
@@ -73,8 +93,4 @@ height: 2em;
 .button-criar:hover{
     background-color: var(--cor-destaque-escura);
     transition: background-color 00.5s ease, color 0.5s ease;
-}
-
-input{
-
 }
