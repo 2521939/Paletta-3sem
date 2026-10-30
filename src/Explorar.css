@@ -1,0 +1,172 @@
+.container-posts{
+display: flex;
+background-color: var(--cor-fundo);
+width: 80%;
+min-height: 100vh;  /* Vh para "esticar" junto com os posts dentro */
+overflow-y: auto;
+flex-wrap: wrap;
+gap: 1.5em;
+margin: auto;
+padding: 1em;
+justify-content: center;
+border-inline: 0.1em solid lightgray;
+}
+
+body{
+    padding-bottom: 55px; /* Levando em conta o Footer */
+}
+
+.post-thumb{
+margin-top: 1em;
+border-radius: 2rem;
+display: flex;
+border-style: solid;
+border-color: #c7c7c7;
+border-width: 0.1em;
+background-color: var(--cor-fundo);
+box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+width: 12rem;
+height: 12rem;
+justify-content: center;
+align-items: end;
+padding: 1rem;
+text-overflow: ellipsis;
+cursor: pointer;
+}
+
+.post-thumb:hover{
+    border: 0.1em solid black;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.39);
+}
+
+
+.icone-novo-post{
+    background-color: var(--cor-destaque);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    font-weight: bold;
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    color: var(--cor-fundo);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.39);
+    transition: background-color 00.5s ease, color 0.5s ease;
+    border-style: solid;
+}
+
+.icone-novo-post:hover{
+    background-color: var(--cor-fundo);
+    color: var(--cor-destaque);
+}
+
+.botao-novo-post{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size: 3rem;
+    padding-bottom: 10px; 
+    text-decoration: none;
+    line-height: 4rem;
+}
+
+
+.modal-de-post{
+    min-height: 25rem;
+    min-width: 30rem;
+    width: auto;
+    justify-self: center;
+    align-self: center;
+    border-radius: 15px;
+    border: none;
+
+}
+
+dialog::backdrop {
+background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header-post{
+    padding: 1rem;
+    background-color: var(--cor-destaque-footer);
+    display: flex;
+    align-items: center;
+}
+
+.fecharbtn{
+    border: none;
+    color: black;
+    background-color: var(--cor-fundo);
+    font-size: 1rem;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    border-radius: 100%;
+    margin-right: 5px;
+    margin-left: auto;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.campos{
+    padding: 2rem;
+}
+
+.campo-descricao{
+    margin-bottom: 3rem;
+}
+.campo-especificacao{
+    margin-bottom: 3rem;
+}
+
+.campo-contato{
+    margin-bottom: 4rem;
+}
+
+.botoes-crud{
+    margin-left: 60%;
+}
+
+.atualizar{
+    border: none;
+    background-color: lightgray;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 50rem;
+    color: black;
+    position: absolute;
+    right: 20px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.39);
+    transition: background-color 00.5s ease, color 0.5s ease;
+}
+
+.atualizar:hover{
+    background-color: var(--cor-destaque);
+    color: black;
+    transition: background-color 00.5s ease, color 0.5s ease;
+}
+
+.deletar{
+    border: none;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    background-color: lightgray;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 50rem;
+    color: black;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.39);
+    transition: background-color 00.5s ease, color 0.5s ease;
+}
+
+.deletar:hover{
+    background-color: red;
+    color: black;
+    transition: background-color 00.5s ease, color 0.5s ease;
+}
