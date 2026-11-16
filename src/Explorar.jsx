@@ -1,10 +1,28 @@
 import React from "react";
 import './App.css'
 import './Explorar.css'
-import { useState } from 'react'
-import { useRef } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react'
 import './Criar.css'
-import { useLocalStorage } from "./useLocalStorage";
+import api from "./api";
+
+const FORMULARIO_VAZIO = { titulo: '', descricao: '', contato: '', };
+
+function mensagemDeErro(error, mensagemPadrao) {
+  if (!error.response) {
+    return 'Não foi possível conectar ao servidor.';
+  }
+  const status = error.response.status;
+  if (status === 401 || status === 403) {
+    return 'Acesso negado: verifique a chave da API.';
+  }
+  if (status === 429) {
+    return 'Muitas requisições. Aguarde um instante e tente novamente.';
+  }
+  return mensagemPadrao;
+}
+
+
+
 
 function Explorar(){
 
@@ -32,62 +50,95 @@ function Explorar(){
         };
 
 
-    const [posts, setPosts] = useLocalStorage("posts", []);
-    const [titulo, setTitulo] = useState("");
-    const [descricao, setDescricao] = useState("");
+    const [pedidos, setPedidos] = useState([]);
     const [editandoId, setEditandoId] = useState(null);
-    const [comunicacao, setComunicacao] = useState("");
+    const [carregando, setCarregando] = useState(false);
+    const [formulario, setFormulario] = useState(FORMULARIO_VAZIO);
+    const [erro, setErro] = useState('');
 
-function limparFormulario() {
-    setTitulo("");
-    setDescricao("");
-    setComunicacao("");
-    setEditandoId(null);
-    fecharModal();
-    fecharPost();
-}
+    const editando = editandoId !== null;
 
-
-function salvarPost(evento) {
-    evento.preventDefault();
-
-    const tituloLimpo = titulo.trim();
-    const descricaoLimpo = descricao.trim();
-    const comunicacaoLimpo = comunicacao.trim();
-
-    if (!tituloLimpo || !descricaoLimpo) return;
-
-    if (editandoId == null) {
-      const novo = {
-        id: crypto.randomUUID(),
-        titulo: tituloLimpo,
-        descricao: descricaoLimpo,
-        comunicacao: comunicacaoLimpo,
-      };
-      setPosts((anteriores) => [...anteriores, novo]);
-    } else {
-      setPosts(anteriores =>
-        anteriores.map(u =>
-          u.id == editandoId ? { ...u, titulo: tituloLimpo, descricao: descricaoLimpo, comunicacao: comunicacaoLimpo, } : u
-        )
-      );
+// READ - Verificar se consigo conectar realmente ou se precisa abri o ip
+  const carregarPedidos = useCallback(async () => {
+    setCarregando(true);
+    try {
+      const resposta = await api.get('/pedidos');
+      console.log("Olha o que veio da api:", resposta.data);
+      // Se não houver usuários, o back-end pode devolver null
+      setPedidos(resposta.data ?? []);
+    } catch (error) {
+      console.error('Erro ao buscar usuários:', error);
+      setErro(mensagemDeErro(error, 'Erro ao buscar usuários.'));
+    } finally {
+      setCarregando(false);
     }
-    limparFormulario();
+  }, []);
+
+
+useEffect(() => { // Erros Aqui Verificar Remover
+    carregarPedidos();
+  }, [carregarPedidos]);
+
+function alterarCampo(evento) {
+    const { name, value } = evento.target;
+    setFormulario((anterior) => ({ ...anterior, [name]: value }));
+}
+// Create - Testar se campos são criados corretamente
+async function salvarPedido(evento) {
+    evento.preventDefault();
+    setErro('');
+
+    const dados = {
+      titulo: formulario.titulo.trim(),
+      descricao: formulario.descricao.trim(),
+      contato: formulario.contato.trim(),
+    };
+
+    try {
+      if (editando) {
+        await api.put(`/pedidos/${editandoId}`, dados);
+      } else {
+        await api.post('/pedidos', dados);
+      }
+      limparFormulario();
+      fecharModal();
+      await carregarPedidos();
+    } catch (error) {
+      console.error('Erro ao salvar pedido:', error);
+      setErro(mensagemDeErro(error, 'Erro ao salvar pedido.'));
+    }
   }
 
-    function Editar(atualPost) {
-    setEditandoId(atualPost.id);
-    setTitulo(atualPost.titulo);
-    setDescricao(atualPost.descricao);
-    setComunicacao(atualPost.comunicacao);
+  // Parte que vai guardas dados e usar na URL pro PUT (Tenho q verificar se a logica faz sentido pro back)
+  function editarUsuario(pedido) {
     fecharPost();
     abrirModal();
-  };
+    setFormulario({ titulo: pedido.titulo, descricao: pedido.descricao, contato: pedido.contato });
+    setEditandoId(pedido._id);
+    setErro('');
+}
 
+// Deletar
+ async function excluirPedido(pedido) {
+    if (!window.confirm(`Excluir o post "${atualPost.titulo}"?`)) return;
+    setErro('');
 
-  function removerPost(id) {
-    setPosts(anteriores => anteriores.filter(u => u.id !== id));
-    if (id === editandoId) limparFormulario();
+    try {
+      await api.delete(`/pedidos/${atualPost._id}`);
+      // Só limpa o formulário se o usuário excluído estava em edição
+      if (atualPost._id === editandoId) limparFormulario();
+      fecharModal();
+      await carregarPedidos();
+    } catch (error) {
+      console.error('Erro ao excluir pedido:', error);
+      setErro(mensagemDeErro(error, 'Erro ao excluir pedido.'));
+    }
+  }
+
+  // Volta o formulário ao estado inicial (modo de cadastro)
+  function limparFormulario() {
+    setFormulario(FORMULARIO_VAZIO);
+    setEditandoId(null);
   }
 
     return (
@@ -96,25 +147,25 @@ function salvarPost(evento) {
 
     {/*Campo de Criação de post (Modal)*/}
     <dialog ref={dialogRef} className="centralizando-dialog">
-    <form onSubmit={salvarPost}>
+    <form onSubmit={salvarPedido}>
     <section class="container-criacao">
       <section>
         <section class="header-criar">
-         <button class="voltar" onClick={fecharModal}>X</button> 
-        <h1 class="titulo-criar">Crie seu post!</h1>
+         <button class="voltar" type="button" onClick={fecharModal}>X</button> 
+        <h1 class="titulo-criar">{editando ? 'Edite seu Post!' : 'Crie seu Post!'}</h1>
         </section>
         <section class="criacao-dentro">
         <h2 class="titulos-campos">Titulo do seu Post:</h2>
         
-        <label>Titulo:
-        <input class="circularinput" type="text" id="titulo" name="titulo" value={titulo} onChange={(e) => setTitulo(e.target.value)} placeholder="Escreva sobre o que se trata"/>
+        <label>Titulo:{' '}
+        <input class="circularinput" type="text" name="titulo" value={formulario.titulo} onChange={alterarCampo} minLength={4} required maxLength={100} placeholder="Escreva sobre o que se trata"/>
         </label>
 
         <h2 class="titulos-campos">Descrição:</h2>
         <section>
         
         <label>Descrição:
-        <input class="circularinput" type="text" id="descricao" name="descricao" value={descricao} onChange={(e) => setDescricao(e.target.value)} placeholder="De uma descrição para seu post!"/>
+        <input class="circularinput" type="text" name="descricao" value={formulario.descricao} onChange={alterarCampo} maxLength={255} required placeholder="De uma descrição para seu post!"/>
         </label>
         </section>
 
@@ -142,7 +193,7 @@ function salvarPost(evento) {
 
         <section>
         <label>Meio de Comunicação:
-        <input class="circularinput" type="text" id="comuniOutros" name="comuniOutros" value={comunicacao} onChange={(e) => setComunicacao(e.target.value)} placeholder="Insira seu meio de comunicação"/>
+        <input class="circularinput" type="text" name="contato" value={formulario.contato} onChange={alterarCampo} placeholder="Insira seu meio de comunicação"/>
         </label>
         </section>
 
@@ -150,8 +201,8 @@ function salvarPost(evento) {
         <input class="circularinput" type="text" name="idPos" id="idPos"/>
         </label> */}
 
-        <button class="button-criar" id="criarpostbtn" type="submit">{editandoId == null ? 'Cadastrar' : 'Alterar'}</button>
-        <div>{editandoId == null ? '' : (<><button type="button" class="deletar" onClick={() => removerPost(editandoId)}>Deletar</button></>)}</div>
+        <button class="button-criar" id="criarpostbtn" type="submit">{editando ? 'Salvar alterações' : 'Criar'}</button>{' '}
+        <div>{editando == false ? (<><button type="button" class="deletar" onClick={limparFormulario}>Limpar</button></>) : (<><button type="button" class="deletar" onClick={() => excluirPedido(editandoId)}>Deletar</button></>)}</div>
         </section>
         </section>
      </section>
@@ -160,9 +211,9 @@ function salvarPost(evento) {
 
 
     <section class="container-posts">
-    {posts.map((post) => (
-    <div key={post.id} class="post-thumb" onClick={() => abrirPost(post)}>
-    <h3>{post.titulo}</h3>
+    {pedidos.map((pedido) => (
+    <div key={pedido._id} class="post-thumb" onClick={() => abrirPost(pedido)}>
+    <h3>{pedido.titulo}</h3>
     </div>
     ))}
     </section>
@@ -187,11 +238,11 @@ function salvarPost(evento) {
 
         <section class="campo-contato">
             <h2>Informações de Contato:</h2>
-            <p id="comuniOutros">Contato: {atualPost.comunicacao}</p>
+            <p id="comuniOutros">Contato: {atualPost.contato}</p>
         </section>
 
         <section class="botoes-crud">
-            <button class="atualizar" onClick={() => Editar(atualPost)}>Atualizar</button>
+            <button class="atualizar" onClick={() => editarUsuario(atualPost)}>Atualizar</button>
         </section>
 
     </section>
